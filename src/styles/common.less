@@ -1,0 +1,297 @@
+@baseColor: #2371d8;
+@lightYellow: #f5ab10;
+@bgYellow: #fff68f;
+@borderLine: #ececec;
+@bgColor: #f8f9fb;
+@hoverColor: #ebf7ff;
+@fallColor: #ae4e54;
+@riseColor: #589065;
+@avatarColor: #234dd8;
+@buttonColor1: #EBECF4;
+@footerColor: #1b262d;
+
+html, body, .main, .page {
+	position: relative;
+	width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+header, footer{
+	position: relative;
+	z-index: 1000;
+	background-color: #fff;
+}
+button{
+	border: none;
+	cursor: pointer;
+}
+ol,ul{
+	list-style: none;
+}
+i{
+	display: inline-block;
+	font-style: normal;
+	
+}
+a {
+    color: #000;
+    background: 0 0;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+	transition: color .2s ease;
+	&:hover {
+		color: @baseColor;
+	}
+}
+.wrapper{
+	position: relative;
+	margin: 0 auto;
+	// width: 1200px;
+	height: 100%;
+}
+.splitPage{
+	padding: 20px 0;
+	text-align: right;
+}
+// 上下左右居中
+.center{
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+ /* 谷歌浏览器隐藏侧边滚动条 */
+//  ::-webkit-scrollbar {
+//     width: 0px;
+//     height: 1px;
+//   }
+//   ::-webkit-scrollbar-thumb {
+//     border-radius: 5px;
+//     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+//     background: rgba(0, 0, 0, 0.2);
+//   }
+
+//清除浮动
+.clearfix {
+	display: block;
+	zoom: 1;
+	&:after {
+		content: " ";
+		display: block;
+		clear: both;
+	}
+}
+.font(@font-size: 16px, @color: #222, @text-align: center, @line-height: 16px) {
+	font-size: @font-size;
+	color: @color;
+	text-align: @text-align;
+	line-height: @line-height;
+}
+/* 左侧边栏通用样式 */
+.leftNav {
+	.title {
+		padding: 10px 0;
+		border-bottom: 1px solid #efe;
+		.font(20px, #555, left, 20px);
+	}
+	.list{
+		margin-top: 10px;
+		.font(16px, #777, left,16px);
+		.active{
+			color: #fff;
+			background-color: @baseColor;
+		}
+		li{
+			padding: 15px 0;
+			cursor: pointer;
+			&:hover {
+				color: #fff;
+				background-color: @baseColor;
+			}
+		}
+	}
+}
+/* 
+	tabel page
+*/
+.pageWrapper{
+	margin: 20px 0;
+	text-align: right;
+}
+
+/* 
+	baseColor Button
+*/
+.baseColorBtn{
+	padding: 5px 10px;
+	border-radius: 4px;
+	.font(14px, #fff);
+	background-color: @baseColor;
+	transition: all .2s;
+	&:hover{
+		background-color: @baseColor;
+	}
+}
+.iconfont{
+	&.title{
+		.font(24px, @baseColor);
+	}
+	&.tips{
+		.font(22px, #999);
+	}
+	&.tips.active{
+		.font(22px, @baseColor);
+	}
+}
+
+// 头像图标样式
+/* 用户首字母头像 */
+.ball(@wh: 35px, @background-color: @avatarColor) {
+	display: inline-block;
+	width: @wh;
+	height: @wh;
+	border-radius: 50%;
+	background-color: @background-color;
+}
+.user-avatar-public{
+    position: relative;
+    .ball(45px, #fff);
+    border: 1px solid @borderLine;
+	box-shadow: 0 1px 5px 0 @borderLine;
+    .user-avatar-in{
+	    .ball();
+	    .font(16px, #fff, center, 35px);
+	    .center; 
+	    background-size: cover;
+	    background-repeat: no-repeat;
+    }
+}
+
+// 页数切换样式修改
+.ivu-page-item-active {
+	background-color: @baseColor;
+    border-color: @baseColor;
+}
+
+.ivu-page-item:hover {
+    border-color: @baseColor;
+}
+
+.ivu-page-next:hover {
+    border-color: @baseColor;
+}
+
+// radio样式修改
+.ivu-radio-checked {
+	&:hover {
+		.ivu-radio-inner {
+			border-color: @baseColor;
+		}
+	}
+	.ivu-radio-inner {
+		border-color: @baseColor;
+		&:after {
+			background: @baseColor;
+		}
+	}
+}
+
+/* checkbox颜色修改 */
+	.ivu-checkbox-wrapper{
+	  margin-right: 0;
+	  .ivu-checkbox-checked {
+		&:hover{
+		  .ivu-checkbox-inner {
+			border-color: @avatarColor;
+		  }
+		}
+		.ivu-checkbox-inner {
+		  border-color: @avatarColor;
+		  background-color: @avatarColor;
+		}
+	  }
+	}
+
+// tab栏样式改写
+.ivu-tabs {
+    .ivu-tabs-bar{
+      .ivu-tabs-nav-container {
+        .ivu-tabs-nav{
+          .ivu-tabs-ink-bar {
+            background-color: @baseColor;
+          }
+          .ivu-tabs-tab {
+            &.ivu-tabs-tab-active {
+              color: @baseColor;                                
+            }
+            &.ivu-tabs-tab-focused {
+              color: @baseColor;
+            }
+            &:hover {
+              color: @baseColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //switch样式修改
+  .ivu-switch-checked {
+    border-color: @baseColor;
+    background-color: @baseColor;
+  }
+
+// modal样式修改
+.ivu-modal-footer {
+	.ivu-btn-primary {
+	  color: #fff;
+	  border-color: @baseColor;
+	  background-color: @baseColor;
+	  &:hover{
+		color: #fff;
+		border-color: @baseColor;
+		background-color: @baseColor;
+	  }
+	}
+  }
+
+// slider样式修改
+.ivu-slider-bar{
+	background: @avatarColor !important;
+  }
+  .ivu-slider-button{
+	  border: 2px solid @avatarColor !important;
+	  &:hover{
+		border-color: @avatarColor !important;
+	  }
+  }
+
+  // select样式修改
+  .ivu-select-item-selected, .ivu-select-item-selected:hover {
+    color: #fff;
+    background: @avatarColor;
+}
+
+// menu样式修改
+.ivu-menu-horizontal.ivu-menu-light:after{
+	height: 0;
+}
+
+// 上传图片标题
+.ivu-upload .ivu-upload-list .ivu-upload-list-file-finish:not(:last-child){
+    display:none;
+}
+
+.myad{
+    .hasBtn{
+        .ivu-table-cell{
+            button{
+                width:40px !important;
+            }
+        }
+    }
+}

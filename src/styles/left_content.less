@@ -1,0 +1,54 @@
+.content-wrap {
+  padding: 20px 0;
+  background-color: #eee;
+  min-height: 750px;
+  .wrapper {
+    .container {
+      text-align: center;
+      padding-top: 30px; // width:1200px;
+      .leftmenu {
+        margin-bottom: 60px;
+        background: #fff;
+        position: relative;
+        min-height: 1px;
+        padding: 20px 0px;
+        .nav {
+          background: #fff;
+          margin-bottom: 0;
+          padding-left: 0;
+          .listtitle {
+            font-size: 20px;
+            margin: 0 8px;
+            color: #000;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(187, 179, 179, 0.17);
+          }
+          .pill-item {
+            line-height: 50px;
+            cursor: pointer;
+            font-size: 15px;
+            display: block;
+            &.active {
+              color: @baseColor;
+            }
+            &:hover {
+              background: #fafafc;
+            }
+            &.router-link-exact-active.router-link-active {
+              color: @baseColor;
+              &:hover {
+                background: #fafafc;
+                color: @baseColor;
+              }
+            }
+          }
+        }
+      }
+      .rightcontent {
+        background: #fff;
+        margin-left: 17px;
+        min-height: 700px; // padding: 10px 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.footer {
+  position: relative;
+  padding: 50px 0;
+  min-width: 1200px;
+  height: 250px;
+  background-color: @footerColor;
+  &.backColor {
+    background-color: #fff !important;
+  }
+  .wrapper {
+    width: 1200px;
+    color: #a1a5ad;
+    margin: 0 auto;
+    .footerLeft {
+      float: left;
+      font-size: 14px;
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .otherchat {
+        margin-top: 8px;
+        margin-bottom: 30px;
+        li {
+          display: inline-block;
+          margin-right: 8px;
+          img{
+              width:24px;
+              height:24px;
+              border-radius:50%;
+          }
+        }
+      }
+    }
+    .footerRight {
+      text-align: center;
+      color: #7d8184;
+      float: right;
+      /*margin-top: 15px;*/
+      /* margin-right: 20px; */
+      ul {
+        float: left;
+        margin: 0 30px;
+        a {
+          display: block;
+          color: #a1a5ad;
+          line-height: 25px;
+        }
+      }
+      .title {
+        line-height: 28px;
+        font-size: 16px;
+        height: 35px;
+      }
+    }
+  }
+
+}

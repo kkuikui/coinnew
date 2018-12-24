@@ -1,0 +1,107 @@
+/* 首页轮播图 */
+.index-wrap .ivu-carousel .ivu-carousel-dots li button{
+	margin: 0 2px;
+	width: 30px;
+	height: 10px;
+	border-radius: 14px;
+}
+.index-wrap .ivu-carousel .ivu-carousel-dots li.ivu-carousel-active button{
+	width: 35px;
+	height: 10px;
+	border-radius: 14px;
+}
+.index-wrap .ivu-carousel .ivu-carousel-dots-inside{
+	margin-bottom: 20px;
+}
+
+.business .ivu-steps-item.ivu-steps-status-finish .ivu-steps-head-inner,.business .ivu-steps-item.ivu-steps-status-process .ivu-steps-head-inner{
+	border-color: #313654;
+	background-color: #313654;
+}
+.business .ivu-steps-item.ivu-steps-status-finish .ivu-steps-head-inner span, .business .ivu-steps-item.ivu-steps-status-finish .ivu-steps-head-inner>.ivu-steps-icon {
+	color: #fff;
+}
+
+/* 验证样式input旋转 */
+.ivu-form-item-validating .ivu-input-icon-validate {
+	display: none;
+}
+/* 	币币交易  input输入框 */
+.exchange .ivu-input {
+	background: #202437 !important;
+	border: 1px solid #4e5b85 !important;
+}
+
+/* 	币币交易  table样式 */
+.exchange .ivu-table-wrapper {
+	border: none ;
+}
+.exchange .ivu-table td, .exchange .ivu-table th {
+	background-color: #1b1e2e;
+	border: none;
+}
+.exchange .ivu-table {
+	border: none;
+	background-color: #1b1e2e;
+}
+.exchange .ivu-table:before, .exchange .ivu-table:after{
+	display: none;
+}
+.exchange tbody .ivu-table-cell {
+	color: #bcd7e6;
+}
+.exchange .ivu-table-row{
+	cursor: pointer;
+}
+.exchange .ivu-table-row-hover td{
+	background-color: #262a42;
+}
+.exchange .ivu-input-group-append{
+	background-color: #202437;
+	border: 1px solid #4e5b85;
+}
+
+.trade .ivu-poptip-rel {
+	width: 100%;
+}
+.trade .ivu-poptip {
+	width: 100%;
+}
+
+.fall{
+	color: #ae4e54;
+}
+
+.rise{
+	color: #589065;
+}
+
+
+.index-wrap .tablebtn{
+	padding: 4px 10px;
+	border-radius: 4px;
+	color: #f0a81e;
+	background-color: #fff;
+	cursor: pointer;
+	border: 1px solid #f0a81e;
+	outline: none;
+}
+.index-wrap .tablebtn:hover{ 
+	color: #fff;
+	background-color: #f0a81e;
+	transition: all .2s;
+}
+
+
+.exchange .ivu-table-row.ivu-table-row-hidden {
+	display: none;
+}
+
+.exchange .ivu-table-cell{
+	padding: 0;
+}
+
+.exchange input{
+	color: #fff;
+}
+
