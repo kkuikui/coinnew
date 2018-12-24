@@ -41,7 +41,8 @@ const i18n = new VueI18n({
   locale: "zh", // 语言标识
   messages: {
     zh: require("./assets/lang/zh.js"),
-    en: require("./assets/lang/en.js")
+    en: require("./assets/lang/en.js"),
+    ko: require("./assets/lang/ko.js")
   }
 });
 Vue.http.interceptors.push((request, next) => {

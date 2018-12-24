@@ -1,91 +1,91 @@
 <template>
-	<div class="header">
-		<div class="page-content">
-            <div class="layout">
-                <div class="introduce">
-                    <div v-for="item in advList" class='topAd' :key="item.index">
-						            <i class="topnotice"></i>
-                        <span class="noticetip" @click="noticedeail(item.id)">{{$t("header.ad")}}{{item.title}}
-                        </span>
-                        <!-- <router-link to="/notice">{{$t("header.seemore")}}</router-link> -->
+  <div class="header">
+    <div class="page-content">
+      <div class="layout">
+        <!-- <div class="introduce">
+          <div v-for="item in advList" class="topAd" :key="item.index">
+            <i class="topnotice"></i>
+            <span class="noticetip" @click="noticedeail(item.id)">{{$t("header.ad")}}{{item.title}}</span>
+            <router-link to="/notice">{{$t("header.seemore")}}</router-link>
+          </div>
+        </div> -->
+        <div class="layout-ceiling">
+          <Row type="flex" justify="center" class="layout-ceiling-main">
+            <Col span="2">
+              <router-link to="/">
+                <div class="layout-logo"></div>
+              </router-link>
+            </Col>
+            <Col span="16" class="header_nav">
+              <Menu :active-name="activeNav" theme="light" width="auto" mode="horizontal">
+                <router-link to="/">
+                  <MenuItem name="nav-index">{{$t("header.index")}}</MenuItem>
+                </router-link>
+                <router-link to="/otc/trade/BTC">
+                  <MenuItem name="nav-otc">{{$t("header.otc")}}</MenuItem>
+                </router-link>
+                <router-link to="/exchange">
+                  <MenuItem name="nav-exchange">{{$t("header.exchange")}}</MenuItem>
+                </router-link>
+                <router-link to="/finance/index">
+                  <MenuItem name="nav-asset">{{$t("header.asset")}}</MenuItem>
+                </router-link>
+                <router-link to="/uc/safe">
+                  <MenuItem name="nav-uc">{{$t("header.ucenter")}}</MenuItem>
+                </router-link>
+                <router-link to="/help">
+                  <MenuItem name="nav-service">{{$t("header.service")}}</MenuItem>
+                </router-link>
+                <a :href="linkTo">
+                  <MenuItem name="nav-link">{{$t("header.link")}}</MenuItem>
+                </a>
+              </Menu>
+            </Col>
+            <Col span="4" class="navBtnWrapper">
+              <div class="loginRegister" v-if="isLogin">
+                <Dropdown>
+                  <a href="javascript:void(0)">
+                    <Icon type="person" class="personstyle"></Icon>
+                    <span>{{member.username}}</span>
+                    <Icon type="arrow-down-b"></Icon>
+                  </a>
+                  <DropdownMenu slot="list">
+                    <div @click="logout">
+                      <DropdownItem>
+                        <i class="dropout"></i>
+                        {{$t("common.logout")}}
+                      </DropdownItem>
                     </div>
-                </div>
-                <div class="layout-ceiling">
-				     	<Row  type="flex" justify="center" class="layout-ceiling-main">
-                        <Col span="2">
-					    	<router-link to="/">
-						        <div class="layout-logo"></div>
-                            </router-link>
-                        </Col>
-					    <Col span="16" class="header_nav">
-                            <Menu :active-name="activeNav" theme="light" width="auto" mode="horizontal">
-							    <router-link to="/">
-								    <MenuItem name="nav-index">{{$t("header.index")}}</MenuItem>
-                                </router-link>
-							    <router-link to="/otc/trade/BTC">
-                                    <MenuItem name="nav-otc">{{$t("header.otc")}}</MenuItem>
-                                </router-link>
-							    <router-link to="/exchange">
-                                    <MenuItem name="nav-exchange">{{$t("header.exchange")}}</MenuItem>
-                                </router-link>
-                                <router-link to="/finance/index">
-                                    <MenuItem name="nav-asset">{{$t("header.asset")}}</MenuItem>
-                                </router-link>
-                                <router-link to="/uc/safe">
-                                    <MenuItem name="nav-uc">{{$t("header.ucenter")}}</MenuItem>
-                                </router-link>
-                                <router-link to="/help">
-                                    <MenuItem name="nav-service">{{$t("header.service")}}</MenuItem>
-                                </router-link>
-                                <a :href="linkTo">
-                                    <MenuItem name="nav-link">{{$t("header.link")}}</MenuItem>
-                                </a>
-                            </Menu>
-                        </Col>
-                        <Col span="4" class="navBtnWrapper">
-                            <div class="loginRegister" v-if="isLogin">
-                                <Dropdown>
-                                    <a href="javascript:void(0)">
-                                        <Icon type="person" class="personstyle"></Icon>
-                                        <span>{{member.username}}</span>
-                                        <Icon type="arrow-down-b"></Icon>
-                                    </a>
-                                    <DropdownMenu slot="list">
-                                        <div @click="logout">
-                                            <DropdownItem>
-                                                <i class="dropout"></i> {{$t("common.logout")}}
-                                            </DropdownItem>
-                                        </div>
-                                    </DropdownMenu>
-                                </Dropdown>
-                            </div>
-                            <div class="loginRegister" v-else>
-                                <router-link to="/login">
-                                 	<Button class="lorebtn" size="small">{{ $t('common.login') }}</Button>
-                                </router-link>
-                                <router-link to="/register">
-                                    <Button class="lorebtn" type="text" size="small" >{{ $t('common.register') }}</Button>
-                                </router-link>
-                            </div>
-                        </Col>
-						<Col span="2" class="navBtnWrapper">
-                            <Dropdown @on-click="changelanguage" class="dropLanguage">
-                                <span>
-                                    {{languageValue}}
-                                    <Icon type="arrow-down-b"></Icon>
-                                </span>
-                                <DropdownMenu slot="list">
-                                    <DropdownItem v-if="languageValue=='简体中文'" name="en">English</DropdownItem>
-                                    <DropdownItem v-else name="cn">简体中文</DropdownItem>
-                                    <!-- <DropdownItem name="hk">繁体中文</DropdownItem> -->
-                                </DropdownMenu>
-                            </Dropdown>
-                        </Col>
-				    </Row>
-				</div>
-			</div>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+              <div class="loginRegister" v-else>
+                <router-link to="/login">
+                  <Button class="lorebtn" size="small">{{ $t('common.login') }}</Button>
+                </router-link>
+                <router-link to="/register">
+                  <Button class="lorebtn" type="text" size="small">{{ $t('common.register') }}</Button>
+                </router-link>
+              </div>
+            </Col>
+            <Col span="2" class="navBtnWrapper">
+              <Dropdown @on-click="changelanguage" class="dropLanguage">
+                <span>
+                  {{languageValue}}
+                  <Icon type="arrow-down-b"></Icon>
+                </span>
+                <DropdownMenu slot="list">
+                  <DropdownItem v-if="languageValue=='简体中文'||languageValue=='한국어'" name="en">English</DropdownItem>
+                  <DropdownItem v-if="languageValue=='English'||languageValue=='한국어'" name="cn">简体中文</DropdownItem>
+                  <DropdownItem v-if="languageValue=='简体中文'||languageValue=='English'" name="ko">한국어</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+          </Row>
         </div>
-	</div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -131,6 +131,7 @@ export default {
     languageValue: function() {
       var curlang = this.$store.getters.lang;
       if (curlang == "English") this.$i18n.locale = "en";
+      if (curlang == "한국어") this.$i18n.locale = "ko";
       return curlang;
     }
   },
@@ -262,9 +263,10 @@ export default {
         this.$store.commit("setlang", "简体中文");
         this.$i18n.locale = "zh";
       }
-      // if (name == 'hk') {
-      //     this.languageValue = '繁体中文';
-      // }
+      if (name == "ko") {
+        this.$store.commit("setlang", "한국어");
+        this.$i18n.locale = "ko";
+      }
     }
   }
 };

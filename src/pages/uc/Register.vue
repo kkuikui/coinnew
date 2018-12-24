@@ -1,87 +1,123 @@
 <template>
-    <div class="login_form register">
-        <div class="login_left container">
-            <!-- <p style="padding-top:150px;">{{$t('uc.regist.hasaccount')}}</p>
+  <div class="login_form register">
+    <div class="login_left container">
+      <!-- <p style="padding-top:150px;">{{$t('uc.regist.hasaccount')}}</p>
             <router-link to="login">
                 <Button style="background:#1E2125;width:130px;margin-top:50px;color:#fff;">{{$t('uc.regist.login')}}</Button>
-            </router-link> -->
-            <div class="login_right">
-                <Form v-if="allowRegister" ref="formInline" :model="formInline" :rules="ruleInline" inline>
-                    <FormItem class="tabbtn">
-                        <ButtonGroup>
-                            <Button v-for="(list,index) in buttonLists" :key="list.text"
-                             :class="{ active:changeActive == index}" @click="actives(index)">{{list.text}}</Button>
-                        </ButtonGroup>
-                    </FormItem>
-                    <FormItem prop="username">
-                        <Input type="text" v-model="formInline.username" :placeholder="$t('uc.regist.username')">
+      </router-link>-->
+      <div class="login_right">
+        <Form v-if="allowRegister" ref="formInline" :model="formInline" :rules="ruleInline" inline>
+          <FormItem class="tabbtn">
+            <ButtonGroup>
+              <Button
+                v-for="(list,index) in buttonLists"
+                :key="list.text"
+                :class="{ active:changeActive == index}"
+                @click="actives(index)"
+              >{{list.text}}</Button>
+            </ButtonGroup>
+          </FormItem>
+          <FormItem prop="username">
+            <Input
+              type="text"
+              v-model="formInline.username"
+              :placeholder="$t('uc.regist.username')"
+            ></Input>
+          </FormItem>
+          <FormItem prop="country">
+            <Select
+              v-model="formInline.country"
+              :placeholder="$t('uc.regist.country')"
+              @on-change="onAreaChange"
+            >
+              <Option
+                v-for="(area, index) in areas"
+                :key="index"
+                :value="area.zhName"
+              >{{area.zhName}}</Option>
+            </Select>
+          </FormItem>
+          <FormItem prop="user">
+            <Input
+              v-if="changeActive == 0"
+              type="text"
+              v-model="formInline.user"
+              :placeholder="key"
+            >
+              <span slot="prepend">+{{formInline.areaCode}}</span>
+            </Input>
+            <Input v-else type="text" v-model="formInline.user" :placeholder="key"></Input>
+          </FormItem>
 
-                        </Input>
-                    </FormItem>
-                    <FormItem prop="country">
-                        <Select v-model="formInline.country" :placeholder="$t('uc.regist.country')" @on-change="onAreaChange">
-                            <Option v-for="(area, index) in areas" :key="index" :value="area.zhName">{{area.zhName}}</Option>
-                        </Select>
-                    </FormItem>
-                    <FormItem prop="user">
-                        <Input v-if="changeActive == 0" type="text" v-model="formInline.user" :placeholder="key">
-                            <span slot="prepend">+{{formInline.areaCode}}</span>
-                        </Input>
-                        <Input v-else type="text" v-model="formInline.user" :placeholder="key">
-                        </Input>
-                    </FormItem>
-
-                    <FormItem prop="code" v-show="showCode">
-                        <!-- <Input style="width:68%" type="text" v-model="formInline.code" :placeholder="$t('uc.regist.smscode')">
+          <FormItem prop="code" v-show="showCode">
+            <!-- <Input style="width:68%" type="text" v-model="formInline.code" :placeholder="$t('uc.regist.smscode')">
 
                         </Input>
                         <input id="sendCode" @click="sendCode();" type="Button" :value="$t('uc.regist.sendcode')">
 
-                        </input> -->
-                        <Input v-model.trim="formInline.code" type="text" :placeholder="$t('uc.regist.smscode')">
-							<Button class="codeStyle" v-if="!countdown || countdown===60" slot="append" :disabled="isdisable" @click="sendCode()">{{$t('uc.regist.sendcode')}}</Button>
-							<Button class="codeStyle" v-else slot="append">{{countdown}}s{{$t('uc.regist.resendcode')}}</Button>
-						</Input>
-                    </FormItem>
-                    <FormItem prop="password">
-                        <Input type="password" v-model="formInline.password" :placeholder="$t('uc.regist.pwd')">
-                        </Input>
-                    </FormItem>
-                    <FormItem prop="agentcode">
-                        <Input type="text" v-model="formInline.agentcode" :placeholder="$t('uc.regist.agentcode')" :disabled="show">
-                        </Input>
-                    </FormItem>
-                    <div class="agree">
-                        <label>
-                            <Checkbox v-model.trim="agree">{{$t('uc.regist.agreement')}}</Checkbox>
-                        </label>
-                        <router-link to="/about-protocol"  style="color:#000;">《{{$t('uc.regist.userprotocol')}}》</router-link>
-                    </div>
-                    <FormItem>
-                        <Button type="info" @click="handleSubmit('formInline')" :disabled="registing">{{$t('uc.regist.regist')}}</Button>
-                    </FormItem>
-                </Form>
-                <Alert v-else type="warning">
-                    Coming soon!
-                    <template slot="desc">
-                        CEX will open register in Mar 1st
-                    </template>
-                </Alert>
-            </div>
-        </div>
-      <Modal v-model="modal1" :mask-closable="false">
-        <p slot="header" style="text-align:center">{{$t('uc.regist.modaltitle')}}</p>
-        <div style="text-align:center">
-          <div>
-            <div id="captcha">
-                <p id="wait" class="show">{{$t('uc.login.validatecodeload')}}......</p>
-            </div>
+            </input>-->
+            <Input
+              v-model.trim="formInline.code"
+              type="text"
+              :placeholder="$t('uc.regist.smscode')"
+            >
+              <Button
+                class="codeStyle"
+                v-if="!countdown || countdown===60"
+                slot="append"
+                :disabled="isdisable"
+                @click="sendCode()"
+              >{{$t('uc.regist.sendcode')}}</Button>
+              <Button
+                class="codeStyle"
+                v-else
+                slot="append"
+              >{{countdown}}s{{$t('uc.regist.resendcode')}}</Button>
+            </Input>
+          </FormItem>
+          <FormItem prop="password">
+            <Input type="password" v-model="formInline.password" :placeholder="$t('uc.regist.pwd')"></Input>
+          </FormItem>
+          <FormItem prop="agentcode">
+            <Input
+              type="text"
+              v-model="formInline.agentcode"
+              :placeholder="$t('uc.regist.agentcode')"
+              :disabled="show"
+            ></Input>
+          </FormItem>
+          <div class="agree">
+            <label>
+              <Checkbox v-model.trim="agree">{{$t('uc.regist.agreement')}}</Checkbox>
+            </label>
+            <router-link to="/about-protocol" style="color:#000;">《{{$t('uc.regist.userprotocol')}}》</router-link>
           </div>
-          <p id="notice" class="hide">{{$t('uc.login.validatemsg')}}</p>
-        </div>
-        <p slot="footer"></p>
-      </Modal>
+          <FormItem>
+            <Button
+              type="info"
+              @click="handleSubmit('formInline')"
+              :disabled="registing"
+            >{{$t('uc.regist.regist')}}</Button>
+          </FormItem>
+        </Form>
+        <Alert v-else type="warning">Coming soon!
+          <template slot="desc">CEX will open register in Mar 1st</template>
+        </Alert>
+      </div>
     </div>
+    <Modal v-model="modal1" :mask-closable="false">
+      <p slot="header" style="text-align:center">{{$t('uc.regist.modaltitle')}}</p>
+      <div style="text-align:center">
+        <div>
+          <div id="captcha">
+            <p id="wait" class="show">{{$t('uc.login.validatecodeload')}}......</p>
+          </div>
+        </div>
+        <p id="notice" class="hide">{{$t('uc.login.validatemsg')}}</p>
+      </div>
+      <p slot="footer"></p>
+    </Modal>
+  </div>
 </template>
 
 <style lang="less">
@@ -297,7 +333,7 @@ export default {
       }
     },
     init() {
-      if (this.getParamString("agent")==undefined) {
+      if (this.getParamString("agent") == undefined) {
         // console.log(this.getParamString("agent"));
         // if (this.isLogin) {
         //   this.$router.push("/");

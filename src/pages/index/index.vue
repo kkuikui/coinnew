@@ -399,11 +399,11 @@ export default {
       btcList: [],
       ethList: [],
       picList: [
-        // {
-        //   url:'../../assets/images/banner1.jpg'
-        // },{
-        //   url:'../../assets/images/banner2.jpg'
-        // }
+        {
+          url:'../../assets/images/banner1.jpg'
+        },{
+          url:'../../assets/images/banner2.jpg'
+        }
       ]
     };
   },
